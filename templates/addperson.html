@@ -1,0 +1,25 @@
+{% include 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <h1>{{ title }}</h1>
+                {% if message %}
+                    <div class="alert alert-success" role="alert">{{ message }}</div>
+                    {% elif warning %}
+                    <div class="alert alert-danger" role="alert">{{ warning }}</div>
+                {% endif %}
+                <form action="/addperson/" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary mb-2">Add Person</button>
+                    <a href="/home" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

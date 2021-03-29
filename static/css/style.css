@@ -1,0 +1,8 @@
+body{
+    color: beige;
+    display: flex;
+    background-color: aqua;
+}
+.form-person{
+    padding: 20px;
+}

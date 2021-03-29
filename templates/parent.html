@@ -1,0 +1,36 @@
+{% include 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+          <h1>{{ title }}</h1>
+        <a href="/addperson" class="btn btn-danger">Add Person</a>
+        <a href="/addroot" class="btn btn-danger">Add Root</a>
+        <a href="/home" class="btn btn-danger">List Person</a>
+          <table class="table">
+              <thead>
+              <tr>
+                  <th>Name Person</th>
+                  <th>Name Parent</th>
+                  <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                  {% for root in roots %}
+                    <tr>
+                    <th>{{ root.id_person }}</th>
+                    <th>{{ root.id_parent }}</th>
+                    <th><a href="{% url 'update_root' root.id %}"><button class="btn btn-primary">Edit</button></a>
+                        <a href="{% url 'deleteroot' root.id %}" class="btn btn-danger">Delete</a></th>
+                    </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

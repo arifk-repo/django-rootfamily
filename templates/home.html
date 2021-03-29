@@ -1,0 +1,40 @@
+{% include 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+          <h1>{{ title }}</h1>
+        <a href="/addperson" class="btn btn-danger">Add Person</a>
+        <a href="/addroot" class="btn btn-danger">Add Root</a>
+        <a href="/parent" class="btn btn-danger">List Parent</a>
+          <table class="table">
+              <thead>
+              <tr>
+                  <th>Nama</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                  {% for person in persons %}
+                    <tr>
+                    <th>{{ person.name }}</th>
+                        {% if person.gender is 0%}
+                            <th>laki-laki</th>
+                        {% else %}
+                            <th>Perempuan</th>
+                        {% endif %}
+                    <th><a href="{% url 'update_person' person.id %}"><button class="btn btn-primary">Edit</button></a>
+                        <a href="{% url 'deleteperson' person.id %}" class="btn btn-danger">Delete</a></th>
+                    </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
